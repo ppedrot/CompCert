@@ -94,6 +94,8 @@ Proof.
     exists (Non_terminal_pt prod ptl). by split.
 Qed.
 
+Set Lax CoInductive Match.
+
 (** [step] preserves the invariant **)
 Lemma step_invariant stk word buffer safe Hi :
   word_has_stack_semantics word stk ->
@@ -129,6 +131,8 @@ Proof.
       * destruct Hword_stk as (pt & <- & <-); eauto.
       * destruct Hword_stk as [<- ?]; eauto.
 Qed.
+
+Unset Lax CoInductive Match.
 
 (** [step] preserves the invariant **)
 Lemma parse_fix_invariant stk word buffer safe log_n_steps Hi :
